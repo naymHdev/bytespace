@@ -1,8 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Container from "../../core/Container";
+
+import b from "../../../../public/icons/b-vector.png";
+import name from "../../../../public/icons/brand-name-black.png";
 
 const linkGroups = [
   [
@@ -36,53 +40,72 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-bg">
-      <Container className="pt-16 lg:pt-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="max-w-[480px]">
+    <footer className="w-full bg-primary-bg">
+      <Container className="pt-20 pb-12">
+        {/* Top Section */}
+        <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16">
+          {/* Left Column: Brand & Newsletter */}
+          <div className="w-full max-w-110">
+            {/* Logo */}
             <Link href="/" className="inline-flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-lime text-lg font-bold text-primary-text">
-                b
-              </span>
-              <span className="text-2xl font-extrabold text-primary-text">
-                ByteSpace
-              </span>
+              <Image
+                src={b}
+                alt="ByteSpace Icon"
+                width={30}
+                height={30}
+                className="h-7 w-auto object-contain"
+              />
+              <Image
+                src={name}
+                alt="ByteSpace"
+                width={125}
+                height={26}
+                className="h-6 w-auto object-contain"
+              />
             </Link>
 
-            <p className="mt-6 text-base text-primary-text">
+            {/* Newsletter Description */}
+            <p className="mt-5 text-[15px] leading-relaxed text-primary-text font-normal">
               Stay Up to date with our latest features and releases by joining
               our newsletter.
             </p>
 
-            <form className="mt-8 flex items-center gap-3">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="h-12 flex-1 rounded-full border-stroke bg-primary-bg px-5 text-base"
-              />
+            {/* Subscribe Form */}
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-6 flex items-center gap-3"
+            >
+              <div className="relative flex-1">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="h-12 w-full rounded-full border border-stroke bg-primary-bg px-6 text-[15px] text-primary-text placeholder:text-secondary-text/80 shadow-none focus-visible:ring-1 focus-visible:ring-brand focus-visible:border-brand"
+                />
+              </div>
               <Button
                 type="submit"
-                variant="secondary"
-                className="h-12 rounded-full px-6 text-base font-medium"
+                className="h-12 rounded-full bg-lime px-8 text-[15px] font-medium text-primary-text shadow-none transition-all hover:bg-lime-hover active:scale-[0.98]"
               >
                 Search
               </Button>
             </form>
 
-            <p className="mt-6 text-sm text-secondary-text">
+            {/* Privacy Disclaimer */}
+            <p className="mt-5 text-[12px] leading-relaxed text-primary-text/90">
               By subscribing, you agree to our Privacy Policy and consent to
               receive updates from our company.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3 lg:pt-6">
-            {linkGroups.map((group, index) => (
-              <ul key={index} className="flex flex-col gap-4">
+          {/* Right Column: Navigation Links */}
+          <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3 lg:gap-x-16 xl:gap-x-20">
+            {linkGroups.map((group, groupIndex) => (
+              <ul key={groupIndex} className="flex flex-col space-y-4">
                 {group.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-base text-primary-text transition-colors hover:text-brand"
+                      className="text-[14px] text-primary-text transition-colors hover:text-brand hover:underline underline-offset-4"
                     >
                       {item.label}
                     </Link>
@@ -93,16 +116,16 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-stroke py-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24">
-          <p className="text-sm text-primary-text">
-            @ 2023 ByteSpace. All rights reserved.
-          </p>
-          <ul className="flex flex-wrap items-center gap-6">
+        {/* Bottom Section: Copyright & Legal */}
+        <div className="mt-20 border-t border-stroke pt-8 flex flex-col items-start justify-between gap-4 text-[13px] text-primary-text sm:flex-row sm:items-center">
+          <p>&copy; 2023 ByteSpace. All rights reserved.</p>
+
+          <ul className="flex flex-wrap items-center gap-6 sm:gap-8">
             {legalLinks.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className="text-sm text-primary-text transition-colors hover:text-brand"
+                  className="transition-colors hover:text-brand"
                 >
                   {item.label}
                 </Link>

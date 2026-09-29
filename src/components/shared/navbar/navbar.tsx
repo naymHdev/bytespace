@@ -84,7 +84,7 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         <Sheet>
-          <SheetTrigger asChild>
+          <SheetTrigger >
             <Button
               variant="ghost"
               size="icon"
@@ -101,7 +101,7 @@ const Navbar = () => {
             <SheetTitle className="sr-only">Menu</SheetTitle>
             <div className="mt-8 flex flex-col gap-6">
               {navLinks.map((item) => (
-                <SheetClose asChild key={item.href}>
+                <SheetClose  key={item.href}>
                   <Link
                     href={item.href}
                     className={cn(
@@ -117,16 +117,16 @@ const Navbar = () => {
               ))}
 
               <div className="mt-4 flex flex-col gap-3 border-t border-white/20 pt-6">
-                <SheetClose asChild>
+                <SheetClose >
                   <Button
-                    asChild
+                    
                     variant="secondary"
                     className="h-11 rounded-full"
                   >
                     <Link href="/register">Join Us</Link>
                   </Button>
                 </SheetClose>
-                <SheetClose asChild>
+                <SheetClose >
                   <Link
                     href="/login"
                     className="text-center text-base font-medium text-white hover:text-lime"
@@ -134,7 +134,7 @@ const Navbar = () => {
                     Sign In
                   </Link>
                 </SheetClose>
-                <SheetClose asChild>
+                <SheetClose >
                   <Link
                     href="/cart"
                     className="flex items-center justify-center gap-2 text-base font-medium text-white hover:text-lime"
