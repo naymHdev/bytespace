@@ -84,15 +84,17 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         <Sheet>
-          <SheetTrigger >
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Open menu"
-              className="text-white hover:bg-white/10 hover:text-white md:hidden"
-            >
-              <Menu className="size-6" />
-            </Button>
+          <SheetTrigger
+            render={
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Open menu"
+                className="text-white hover:bg-white/10 hover:text-white md:hidden"
+              />
+            }
+          >
+            <Menu className="size-6" />
           </SheetTrigger>
           <SheetContent
             side="right"
@@ -101,47 +103,56 @@ const Navbar = () => {
             <SheetTitle className="sr-only">Menu</SheetTitle>
             <div className="mt-8 flex flex-col gap-6">
               {navLinks.map((item) => (
-                <SheetClose  key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "text-lg transition-colors hover:text-lime",
-                      isActive(item.href)
-                        ? "font-semibold text-white"
-                        : "font-medium text-white/70",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
+                <SheetClose
+                  key={item.href}
+                  render={
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "text-lg transition-colors hover:text-lime",
+                        isActive(item.href)
+                          ? "font-semibold text-white"
+                          : "font-medium text-white/70",
+                      )}
+                    />
+                  }
+                >
+                  {item.label}
                 </SheetClose>
               ))}
 
               <div className="mt-4 flex flex-col gap-3 border-t border-white/20 pt-6">
-                <SheetClose >
-                  <Button
-                    
-                    variant="secondary"
-                    className="h-11 rounded-full"
-                  >
-                    <Link href="/register">Join Us</Link>
-                  </Button>
+                <SheetClose
+                  render={
+                    <Button
+                      variant="secondary"
+                      className="h-11 rounded-full"
+                      render={<Link href="/register" />}
+                    />
+                  }
+                >
+                  Join Us
                 </SheetClose>
-                <SheetClose >
-                  <Link
-                    href="/login"
-                    className="text-center text-base font-medium text-white hover:text-lime"
-                  >
-                    Sign In
-                  </Link>
+                <SheetClose
+                  render={
+                    <Link
+                      href="/login"
+                      className="text-center text-base font-medium text-white hover:text-lime"
+                    />
+                  }
+                >
+                  Sign In
                 </SheetClose>
-                <SheetClose >
-                  <Link
-                    href="/cart"
-                    className="flex items-center justify-center gap-2 text-base font-medium text-white hover:text-lime"
-                  >
-                    <ShoppingBag className="size-5" />
-                    Cart
-                  </Link>
+                <SheetClose
+                  render={
+                    <Link
+                      href="/cart"
+                      className="flex items-center justify-center gap-2 text-base font-medium text-white hover:text-lime"
+                    />
+                  }
+                >
+                  <ShoppingBag className="size-5" />
+                  Cart
                 </SheetClose>
               </div>
             </div>
