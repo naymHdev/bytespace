@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import Container from "@/components/core/Container";
 import frame11 from "@/assets/Frame 11.png";
@@ -34,7 +37,13 @@ const GrowthSection = () => {
         {/* Block 1: Professional Growth */}
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12 xl:gap-16">
           {/* Left: Text & Stats */}
-          <div className="w-full max-w-[500px]">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-[500px]"
+          >
             <h2 className="text-3xl font-bold leading-[1.12] tracking-tight text-primary-text sm:text-4xl lg:text-[48px] xl:text-[52px]">
               Your Path to Professional
               <br className="hidden sm:inline" /> Growth Starts Here!
@@ -50,44 +59,93 @@ const GrowthSection = () => {
 
             {/* Metrics */}
             <div className="mt-8 flex items-center gap-10 sm:gap-12 lg:gap-14">
-              {stats.map((stat) => (
-                <div key={stat.label}>
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.2 + i * 0.1,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
                   <div className="text-3xl font-bold tracking-tight text-brand sm:text-4xl lg:text-[36px]">
                     {stat.value}
                   </div>
                   <div className="mt-1 text-xs font-normal text-secondary-text sm:text-sm">
                     {stat.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Illustration Frame 11 */}
-          <div className="relative flex w-full max-w-[580px] shrink-0 items-center justify-center xl:max-w-[640px]">
-            <Image
-              src={frame11}
-              alt="Your Path to Professional Growth Starts Here"
-              priority={false}
-              className="h-auto w-full object-contain"
-            />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex w-full max-w-[580px] shrink-0 items-center justify-center xl:max-w-[640px]"
+          >
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 5,
+                ease: "easeInOut",
+              }}
+              className="w-full"
+            >
+              <Image
+                src={frame11}
+                alt="Your Path to Professional Growth Starts Here"
+                priority={false}
+                className="h-auto w-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Block 2: Create & Manage Courses Easily */}
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:gap-12 xl:gap-16">
           {/* Left: Illustration Frame 12 */}
-          <div className="order-2 relative flex w-full max-w-[520px] shrink-0 items-center justify-center lg:order-1 xl:max-w-[586px]">
-            <Image
-              src={frame12}
-              alt="Create & Manage Courses Easily"
-              priority={false}
-              className="h-auto w-full object-contain"
-            />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="order-2 relative flex w-full max-w-[520px] shrink-0 items-center justify-center lg:order-1 xl:max-w-[586px]"
+          >
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 5.5,
+                delay: 0.5,
+                ease: "easeInOut",
+              }}
+              className="w-full"
+            >
+              <Image
+                src={frame12}
+                alt="Create & Manage Courses Easily"
+                priority={false}
+                className="h-auto w-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
 
           {/* Right: Text & Checklist */}
-          <div className="order-1 w-full max-w-[500px] lg:order-2">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="order-1 w-full max-w-[500px] lg:order-2"
+          >
             <h2 className="text-3xl font-bold leading-[1.12] tracking-tight text-primary-text sm:text-4xl lg:text-[48px] xl:text-[52px]">
               Create &amp; Manage
               <br className="hidden sm:inline" /> Courses Easily.
@@ -101,8 +159,19 @@ const GrowthSection = () => {
 
             {/* Checklist */}
             <ul className="mt-8 flex flex-col gap-4 sm:gap-4.5">
-              {features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3.5">
+              {features.map((feature, idx) => (
+                <motion.li
+                  key={feature}
+                  initial={{ opacity: 0, x: 15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.45,
+                    delay: 0.2 + idx * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="flex items-center gap-3.5"
+                >
                   <svg
                     className="size-[22px] shrink-0"
                     viewBox="0 0 22 22"
@@ -121,10 +190,10 @@ const GrowthSection = () => {
                   <span className="text-base font-medium text-primary-text sm:text-[17px]">
                     {feature}
                   </span>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>
