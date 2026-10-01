@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -22,11 +23,21 @@ const navLinks = [
 ];
 
 const Logo = () => (
-  <Link href="/" className="inline-flex items-center gap-2">
-    <span className="flex size-7 items-center justify-center rounded-lg bg-lime text-base font-bold text-primary-text">
-      b
-    </span>
-    <span className="text-xl font-extrabold text-white">ByteSpace</span>
+  <Link href="/" className="inline-flex items-center gap-2.5">
+    <Image
+      src="/icons/b-vector.png"
+      alt="ByteSpace Icon"
+      width={28}
+      height={28}
+      className="h-7 w-auto object-contain"
+    />
+    <Image
+      src="/icons/brand-name.png"
+      alt="ByteSpace"
+      width={120}
+      height={22}
+      className="h-5 w-auto object-contain"
+    />
   </Link>
 );
 
@@ -37,7 +48,12 @@ const Navbar = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="bg-brand">
+    <header
+      className={cn(
+        "w-full z-50 transition-colors",
+        pathname === "/" ? "absolute top-0 left-0 bg-transparent" : "bg-brand",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between lg:h-20">
         <Logo />
 

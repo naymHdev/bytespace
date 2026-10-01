@@ -43,31 +43,31 @@ const legalLinks = [
 const Footer = () => {
   return (
     <footer className="w-full bg-primary-bg">
-      <Container className="pt-20 pb-12">
+      <Container className="pt-16 pb-12 sm:pt-20 sm:pb-16">
         {/* Top Section */}
-        <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16">
+        <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-24">
           {/* Left Column: Brand & Newsletter */}
-          <div className="w-full max-w-110">
+          <div className="w-full max-w-md lg:max-w-110">
             {/* Logo */}
-            <Link href="/" className="inline-flex items-center gap-2">
+            <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
                 src={b}
                 alt="ByteSpace Icon"
                 width={30}
                 height={30}
-                className="h-7 w-auto object-contain"
+                className="h-8 w-auto object-contain"
               />
               <Image
                 src={name}
                 alt="ByteSpace"
                 width={125}
                 height={26}
-                className="h-6 w-auto object-contain"
+                className="h-5 w-auto object-contain"
               />
             </Link>
 
             {/* Newsletter Description */}
-            <p className="mt-5 text-[15px] leading-relaxed text-primary-text font-normal">
+            <p className="mt-5 text-sm leading-relaxed text-primary-text/80 sm:text-base font-light">
               Stay Up to date with our latest features and releases by joining
               our newsletter.
             </p>
@@ -75,39 +75,39 @@ const Footer = () => {
             {/* Subscribe Form */}
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="mt-6 flex items-center gap-3"
+              className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <div className="relative flex-1">
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="h-12 w-full rounded-full border border-stroke bg-primary-bg px-6 text-[15px] text-primary-text placeholder:text-secondary-text/80 shadow-none focus-visible:ring-1 focus-visible:ring-brand focus-visible:border-brand"
+                  className="h-12 w-full rounded-full border border-stroke bg-primary-bg px-5 text-sm text-primary-text placeholder:text-secondary-text shadow-none focus-visible:border-brand focus-visible:ring-1 focus-visible:ring-brand sm:text-base"
                 />
               </div>
               <Button
                 type="submit"
-                className="h-12 rounded-full bg-lime px-8 text-[15px] font-medium text-primary-text shadow-none transition-all hover:bg-lime-hover active:scale-[0.98]"
+                className="h-12 rounded-full bg-lime px-8 text-sm font-semibold text-primary-text shadow-none transition-all hover:bg-lime-hover active:scale-[0.98] sm:text-base"
               >
                 Search
               </Button>
             </form>
 
             {/* Privacy Disclaimer */}
-            <p className="mt-5 text-[12px] leading-relaxed text-primary-text/90">
+            <p className="mt-4 text-xs leading-relaxed text-primary-text font-light">
               By subscribing, you agree to our Privacy Policy and consent to
               receive updates from our company.
             </p>
           </div>
 
           {/* Right Column: Navigation Links */}
-          <div className="grid grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-3 lg:gap-x-16 xl:gap-x-20">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 sm:gap-x-12 sm:gap-y-10 lg:gap-x-16 xl:gap-x-20 lg:pt-1">
             {linkGroups.map((group, groupIndex) => (
-              <ul key={groupIndex} className="flex flex-col space-y-4">
+              <ul key={groupIndex} className="flex flex-col space-y-3.5 sm:space-y-4">
                 {group.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-[14px] text-primary-text transition-colors hover:text-brand hover:underline underline-offset-4"
+                      className="text-sm text-primary-text transition-colors hover:text-brand  font-light"
                     >
                       {item.label}
                     </Link>
@@ -119,7 +119,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section: Copyright & Legal */}
-        <div className="mt-20 border-t border-stroke pt-8 flex flex-col items-start justify-between gap-4 text-[13px] text-primary-text sm:flex-row sm:items-center">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-stroke pt-8 text-xs text-secondary-text sm:mt-20 sm:flex-row sm:items-center sm:text-sm font-light">
           <p>&copy; 2023 ByteSpace. All rights reserved.</p>
 
           <ul className="flex flex-wrap items-center gap-6 sm:gap-8">
