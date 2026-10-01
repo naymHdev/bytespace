@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
+import { LoginForm } from "../_components/login-form";
 
-const page = () => {
-  return (
-    <>page</>
-);
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Sign in to access your ByteSpace account",
 };
 
-export default page;
+export default function LoginPage() {
+  return <LoginForm />;
+}

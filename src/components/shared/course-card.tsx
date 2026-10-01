@@ -36,7 +36,7 @@ const CourseCard = ({ course, className }: CourseCardProps) => {
         className,
       )}
     >
-      <div className="@container relative aspect-342/196 overflow-hidden rounded-2xl">
+      <div className="@container relative aspect-[342/196] overflow-hidden rounded-2xl">
         <Image
           src={image}
           alt={title}

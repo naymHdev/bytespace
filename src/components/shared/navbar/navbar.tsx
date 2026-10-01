@@ -41,17 +41,31 @@ const Logo = () => (
   </Link>
 );
 
-const Navbar = () => {
+type NavbarProps = {
+  transparent?: boolean;
+};
+
+const Navbar = ({ transparent }: NavbarProps) => {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const isTransparent =
+    transparent !== undefined
+      ? transparent
+      : pathname === "/" ||
+        pathname === "/courses" ||
+        pathname?.startsWith("/courses/") ||
+        pathname === "/creators" ||
+        pathname?.startsWith("/creators/") ||
+        pathname === "/404";
+
   return (
     <header
       className={cn(
         "w-full z-50 transition-colors",
-        pathname === "/" ? "absolute top-0 left-0 bg-transparent" : "bg-brand",
+        isTransparent ? "absolute top-0 left-0 bg-transparent" : "bg-brand",
       )}
     >
       <Container className="flex h-16 items-center justify-between lg:h-20">

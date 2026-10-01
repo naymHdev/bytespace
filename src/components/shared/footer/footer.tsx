@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Container from "../../core/Container";
 
-import b from "../../../../public/icons/b-vector.png";
-import name from "../../../../public/icons/brand-name-black.png";
 
 const linkGroups = [
   [
@@ -42,7 +40,7 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-primary-bg">
+    <footer className="w-full bg-primary-bg border-t border-stroke">
       <Container className="pt-16 pb-12 sm:pt-20 sm:pb-16">
         {/* Top Section */}
         <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-start lg:gap-16 xl:gap-24">
@@ -51,17 +49,19 @@ const Footer = () => {
             {/* Logo */}
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
-                src={b}
+                src="/icons/b-vector.png"
                 alt="ByteSpace Icon"
-                width={30}
-                height={30}
-                className="h-8 w-auto object-contain"
+                width={28}
+                height={28}
+                unoptimized
+                className="h-7 w-auto object-contain"
               />
               <Image
-                src={name}
+                src="/icons/brand-name-black.png"
                 alt="ByteSpace"
-                width={125}
-                height={26}
+                width={120}
+                height={22}
+                unoptimized
                 className="h-5 w-auto object-contain"
               />
             </Link>
