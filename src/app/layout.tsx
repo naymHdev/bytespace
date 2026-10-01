@@ -24,6 +24,14 @@ export const metadata: Metadata = {
   },
   description:
     "Get access to hundreds of courses. Discover your passion, build your skills, and grow your career with ByteSpace.",
+  icons: {
+    icon: [
+      { url: "/icons/b-vector.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    shortcut: "/icons/b-vector.png",
+    apple: "/icons/b-vector.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
